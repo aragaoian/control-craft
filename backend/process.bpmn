@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_01" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_01">
+    <bpmn:participant id="Participant_01" name="International Freight Payment Process" processRef="Process_01" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_01" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_01">
+      <bpmn:lane id="Lane_Ops" name="Commercial &amp; Ops">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Manual_Sheet</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Finance" name="Financial Operations">
+        <bpmn:flowNodeRef>Gateway_Verification</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Execute_Payment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Success</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Audit_Invoices</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Booking Confirmed">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_Manual_Sheet" name="Manually Consolidate Costs in Spreadsheet">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:incoming>Flow_Rework</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_Manual_Sheet" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Manual_Sheet" targetRef="Task_Audit_Invoices" />
+    <bpmn:exclusiveGateway id="Gateway_Verification" name="Data Validated?">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_Passed</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Rework</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_Execute_Payment" name="Execute Bank Transfer">
+      <bpmn:incoming>Flow_Passed</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="EndEvent_Success" name="Payment Completed">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_Audit_Invoices" targetRef="Gateway_Verification" />
+    <bpmn:sequenceFlow id="Flow_Passed" name="Yes" sourceRef="Gateway_Verification" targetRef="Task_Execute_Payment" />
+    <bpmn:sequenceFlow id="Flow_Rework" name="No (Manual Rework)" sourceRef="Gateway_Verification" targetRef="Task_Manual_Sheet" />
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_Execute_Payment" targetRef="EndEvent_Success" />
+    <bpmn:task id="Task_Audit_Invoices" name="Audit Invoices vs Incoterms">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:task>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_01">
+      <bpmndi:BPMNShape id="Participant_01_di" bpmnElement="Participant_01" isHorizontal="true">
+        <dc:Bounds x="120" y="80" width="750" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Finance_di" bpmnElement="Lane_Finance" isHorizontal="true">
+        <dc:Bounds x="150" y="270" width="720" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Ops_di" bpmnElement="Lane_Ops" isHorizontal="true">
+        <dc:Bounds x="150" y="80" width="720" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="212" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Manual_Sheet_di" bpmnElement="Task_Manual_Sheet">
+        <dc:Bounds x="300" y="130" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Audit_Invoices_di" bpmnElement="Task_Audit_Invoices">
+        <dc:Bounds x="300" y="320" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Verification_di" bpmnElement="Gateway_Verification" isMarkerVisible="true">
+        <dc:Bounds x="485" y="335" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Execute_Payment_di" bpmnElement="Task_Execute_Payment">
+        <dc:Bounds x="610" y="320" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Success_di" bpmnElement="EndEvent_Success">
+        <dc:Bounds x="792" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="248" y="170" />
+        <di:waypoint x="300" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="360" y="210" />
+        <di:waypoint x="360" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="420" y="360" />
+        <di:waypoint x="485" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Passed_di" bpmnElement="Flow_Passed">
+        <di:waypoint x="535" y="360" />
+        <di:waypoint x="610" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Rework_di" bpmnElement="Flow_Rework">
+        <di:waypoint x="510" y="335" />
+        <di:waypoint x="510" y="170" />
+        <di:waypoint x="420" y="170" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="518" y="240" width="65" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="730" y="360" />
+        <di:waypoint x="792" y="360" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -104,7 +104,10 @@ dependencies = [
     { name = "fastapi" },
     { name = "ibm-watsonx-ai" },
     { name = "ibm-watsonx-orchestrate" },
+    { name = "ibmcloudant" },
     { name = "python-dotenv" },
+    { name = "python-multipart" },
+    { name = "uvicorn" },
 ]
 
 [package.metadata]
@@ -112,7 +115,10 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.128.0" },
     { name = "ibm-watsonx-ai", specifier = ">=1.3.42" },
     { name = "ibm-watsonx-orchestrate", specifier = ">=2.3.0" },
+    { name = "ibmcloudant", specifier = ">=0.11.3" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
+    { name = "python-multipart", specifier = ">=0.0.22" },
+    { name = "uvicorn", specifier = ">=0.40.0" },
 ]
 
 [[package]]
@@ -178,7 +184,7 @@ wheels = [
 
 [[package]]
 name = "ibm-cloud-sdk-core"
-version = "3.24.3"
+version = "3.24.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyjwt" },
@@ -186,9 +192,9 @@ dependencies = [
     { name = "requests" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f7/89/269409be5c2bf52354be64c2969485830802999d76b842b450030c11cf22/ibm_cloud_sdk_core-3.24.3.tar.gz", hash = "sha256:841d027e4f0019a7e2f0bfa64c8234e53a9654f8bbeb02f8d4068c363eb428eb", size = 81795, upload-time = "2026-01-28T17:08:21.662Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d5/0f/e7d1401591681442523cfb0e594c6e4dfbd3b5a983cc76a4ad648093afce/ibm_cloud_sdk_core-3.24.2.tar.gz", hash = "sha256:06265ce80162301c0e3dab336f76669137e40038ec802011e4c92f143bead116", size = 76256, upload-time = "2025-06-12T15:08:21.26Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/31/b5/9045110e0970bb32b295f31eb52e8b7c9a79f3c71b90a85a1c92fb315a52/ibm_cloud_sdk_core-3.24.3-py3-none-any.whl", hash = "sha256:735750f5b0169ed23c85f0d2aab176eef97d605e81a62750d63473984ba3884b", size = 75787, upload-time = "2026-01-28T17:08:20.096Z" },
+    { url = "https://files.pythonhosted.org/packages/95/d7/3c267989238177be377a2b8b663c379db02802332b6353f2101416c7bf62/ibm_cloud_sdk_core-3.24.2-py3-none-any.whl", hash = "sha256:432c0edd812a22a1c61af095bf48202e29a1c03a893fc735389399ace059ee64", size = 75786, upload-time = "2025-06-12T15:08:17.026Z" },
 ]
 
 [[package]]
@@ -272,6 +278,21 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/dd/ff/90a64fc84ababb4d66fe46cccce00aea1b08e105d1143191735c0ae43466/ibm_watsonx_orchestrate-2.3.0.tar.gz", hash = "sha256:08699ba3708d2542afca2ee1ac8d39b3e1707608d7925833a52c052fddd08951", size = 4403647, upload-time = "2026-01-30T21:41:01.422Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/23/48/bb59cef718affc77581db9952a0d2eeb60361ef9278b5335735774bb606b/ibm_watsonx_orchestrate-2.3.0-py3-none-any.whl", hash = "sha256:10341fcdc59b8bd16672cd34ff060416a69f6f8fb1f27bcb48d5397e3bb865c7", size = 4495293, upload-time = "2026-01-30T21:40:57.82Z" },
+]
+
+[[package]]
+name = "ibmcloudant"
+version = "0.11.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "ibm-cloud-sdk-core" },
+    { name = "pyjwt" },
+    { name = "python-dateutil" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/27/a1/f7df2bca365c5952302ebe99c317944c19c801460f2d4fb258d9213dbdde/ibmcloudant-0.11.3.tar.gz", hash = "sha256:98ba7b49d50dc58d74f9596e64a67bdc1ac066f00796036f96a1cd572f8ec2db", size = 115985, upload-time = "2026-01-15T10:11:27.631Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a0/57/199a8639317c0885ec96f5685e37f8e0481d5faa85e5a2bb6698dd50b6cb/ibmcloudant-0.11.3-py3-none-any.whl", hash = "sha256:6a80fc835ebc4afcf48524c83b838d8243f60d8d40d192812f97fa34a1c79d5e", size = 120664, upload-time = "2026-01-15T10:11:26.541Z" },
 ]
 
 [[package]]
@@ -576,6 +597,15 @@ wheels = [
 ]
 
 [[package]]
+name = "python-multipart"
+version = "0.0.22"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/01/979e98d542a70714b0cb2b6728ed0b7c46792b695e3eaec3e20711271ca3/python_multipart-0.0.22.tar.gz", hash = "sha256:7340bef99a7e0032613f56dc36027b959fd3b30a787ed62d310e951f7c3a3a58", size = 37612, upload-time = "2026-01-25T10:15:56.219Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1b/d0/397f9626e711ff749a95d96b7af99b9c566a9bb5129b8e4c10fc4d100304/python_multipart-0.0.22-py3-none-any.whl", hash = "sha256:2b2cd894c83d21bf49d702499531c7bafd057d730c201782048f7945d82de155", size = 24579, upload-time = "2026-01-25T10:15:54.811Z" },
+]
+
+[[package]]
 name = "pytz"
 version = "2025.2"
 source = { registry = "https://pypi.org/simple" }
@@ -781,6 +811,19 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e7/9b/e5e99b324b1b5f0c62882230455786df0bc66f67eff3b452447e703f45d2/uuid_utils-0.14.0-cp39-abi3-win32.whl", hash = "sha256:ec2fd80adf8e0e6589d40699e6f6df94c93edcc16dd999be0438dd007c77b151", size = 177319, upload-time = "2026-01-20T20:37:04.208Z" },
     { url = "https://files.pythonhosted.org/packages/d3/28/2c7d417ea483b6ff7820c948678fdf2ac98899dc7e43bb15852faa95acaf/uuid_utils-0.14.0-cp39-abi3-win_amd64.whl", hash = "sha256:efe881eb43a5504fad922644cb93d725fd8a6a6d949bd5a4b4b7d1a1587c7fd1", size = 182566, upload-time = "2026-01-20T20:37:16.868Z" },
     { url = "https://files.pythonhosted.org/packages/b8/86/49e4bdda28e962fbd7266684171ee29b3d92019116971d58783e51770745/uuid_utils-0.14.0-cp39-abi3-win_arm64.whl", hash = "sha256:32b372b8fd4ebd44d3a219e093fe981af4afdeda2994ee7db208ab065cfcd080", size = 182809, upload-time = "2026-01-20T20:37:05.139Z" },
+]
+
+[[package]]
+name = "uvicorn"
+version = "0.40.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "h11" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c3/d1/8f3c683c9561a4e6689dd3b1d345c815f10f86acd044ee1fb9a4dcd0b8c5/uvicorn-0.40.0.tar.gz", hash = "sha256:839676675e87e73694518b5574fd0f24c9d97b46bea16df7b8c05ea1a51071ea", size = 81761, upload-time = "2025-12-21T14:16:22.45Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3d/d8/2083a1daa7439a66f3a48589a57d576aa117726762618f6bb09fe3798796/uvicorn-0.40.0-py3-none-any.whl", hash = "sha256:c6c8f55bc8bf13eb6fa9ff87ad62308bbbc33d0b67f84293151efe87e0d5f2ee", size = 68502, upload-time = "2025-12-21T14:16:21.041Z" },
 ]
 
 [[package]]
