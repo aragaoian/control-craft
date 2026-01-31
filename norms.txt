@@ -1,0 +1,97 @@
+# Internal Process Quality and Control Standards
+
+## Purpose
+These standards define the minimum quality, control, and governance requirements for all operational processes within the company.
+
+All process analyses, risk evaluations, and redesigns must be strictly aligned with these rules.
+
+---
+
+## 1. Process Structure Standards
+
+### 1.1 Documentation
+- Every process must have a documented SOP describing:
+  - Purpose
+  - Scope
+  - Responsible roles
+  - Inputs and outputs
+  - Control points
+- The SOP must be consistent with the BPMN flow.
+
+### 1.2 BPMN Requirements
+- BPMN flows must clearly define:
+  - Start and end events
+  - Decision points
+  - Responsible roles per activity
+  - Mandatory approvals
+- Parallel or skipped activities must be explicitly justified.
+
+---
+
+## 2. Control Points
+
+### 2.1 Mandatory Controls
+- All processes involving financial impact must include:
+  - At least one validation control
+  - At least one approval control
+- Controls must not be implicit or informal.
+
+### 2.2 Approval Rules
+- Financial approvals must follow segregation of duties:
+  - The same role cannot create and approve a transaction.
+- High-impact transactions must require multi-level approval.
+
+---
+
+## 3. Risk Classification
+
+### 3.1 Risk Dimensions
+Each process must be evaluated across:
+- Financial impact
+- Operational impact
+- Probability of error
+- Effectiveness of existing controls
+
+### 3.2 Risk Levels
+- Low Risk: minimal impact, strong controls
+- Medium Risk: moderate impact or partial controls
+- High Risk: high impact and/or weak or missing controls
+
+---
+
+## 4. Traceability and Auditability
+
+### 4.1 Traceability
+- All critical decisions must be traceable to:
+  - A role
+  - A timestamp
+  - A justification
+- Processes lacking traceability are considered non-compliant.
+
+### 4.2 Evidence
+- Each control point must produce evidence:
+  - Approval record
+  - System log
+  - Documented confirmation
+
+---
+
+## 5. Continuous Improvement
+
+### 5.1 Process Review
+- Processes must be reviewed periodically when:
+  - Risk level is high
+  - Recurrent errors are detected
+  - Regulations change
+
+### 5.2 Redesign Principles
+- Redesigns must prioritize:
+  - Risk reduction
+  - Control effectiveness
+  - Operational simplicity
+- Automation should be recommended where it reduces human error.
+
+---
+
+## 6. Enforcement
+Any process that does not comply with these standards must be flagged, scored as higher risk, and recommended for redesign.
