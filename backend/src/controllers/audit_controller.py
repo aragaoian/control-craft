@@ -20,8 +20,15 @@ async def agent_response(bpmn_file: UploadFile) -> dict:
     generated = completions(
         getenv("GENERATOR_AGENT_ID"), f"{bpmn_content} \n\n {analysis}"
     )
+    #get xml from generated response
+    try:
+        generated_xml = generated.split("```xml")[1].split("```")[0]
+    except IndexError:
+        print(generated)
+        generated_xml = generated
+    fixer = completions(getenv("FIXER_AGENT_ID"), generated_xml)
 
     return {
         "analysis": analysis,
-        "generated": generated,
+        "generated": fixer
     }
