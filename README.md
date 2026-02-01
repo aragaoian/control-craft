@@ -3,11 +3,8 @@
     Control-Craft
   </h1>
   <p style="max-width: 600px;">
-    <b>ADOPET Rs</b>: A Feature-Weighted Content-Based filtering developed to decrease adopted pets abandonment and aid to democratize the adoption process
+     AI-powered process audit and redesign using IBM Watsonx Agents
   </p>
-  <a href="https://adopet.top/">
-    adopet.top
-  </a>
 </div>
 
 In this hackathon, we design and build a proof-of-concept agentic AI solution using IBM watsonx Orchestrate, a low-code platform to build and deploy AI agents.
