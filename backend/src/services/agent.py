@@ -6,6 +6,8 @@ authenticator = IAMAuthenticator(getenv("IAM_API_TOKEN"))
 
 
 def completions(agent_id: str, text: str):
+    if agent_id == getenv("ANALYSIS_AGENT_ID"):
+        text = text + "\n YOU MUST NOT CREATE TABLES IN ANY CIRCUMSTANCES"
     json_body = {
         "messages": [
             {
