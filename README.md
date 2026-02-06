@@ -69,6 +69,3 @@ Notes:
 **Contacts & Credits**
 - Team: Baguncinha
 - Event: IBM DEV DAY Hackathon
-
-If you want, I can also add a quick demo script, containerization notes, or implement the watsonx Orchestrate connector — tell me which next.
-Control-Craft
